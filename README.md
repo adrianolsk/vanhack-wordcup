@@ -6,4 +6,5 @@ and then
 `npm start`
 
 to run the tests ( to be completed...)
-'npm run test`
+
+`npm run test`
