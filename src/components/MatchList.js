@@ -20,7 +20,7 @@ const StyledRight = styled.div`
 
 const MatchList = props => (
   <div>
-    <StyledGrid>
+    <StyledGrid data-testid="match-grid">
       {props.matches.map(m => (
         <Card key={m.fifa_id}>
           <CardContent>
