@@ -11,15 +11,20 @@ import { withStyles } from "@material-ui/core/styles";
 
 const styles = theme => ({
   root: {
-    // width: "100%",
+    width: "100%",
     marginTop: theme.spacing.unit * 3,
     overflowX: "auto"
   },
   table: {
-    // minWidth: 700
+    minWidth: 700
   },
   small: {
     width: 50
+  },
+  country: {
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr",
+    alignItems: "center"
   }
 });
 
@@ -55,8 +60,10 @@ const GroupList = ({ classes, groups }) => (
             {g.group.teams.map((t, index) => {
               return (
                 <TableRow key={t.team.id}>
-                  <TableCell className={classes.small}>{index + 1}</TableCell>
-                  <TableCell>
+                  <TableCell numeric className={classes.small}>
+                    {index + 1}
+                  </TableCell>
+                  <TableCell className={classes.country}>
                     <img
                       src={`/images/flags/${t.team.id}.png`}
                       alt={t.team.country}

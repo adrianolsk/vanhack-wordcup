@@ -4,49 +4,42 @@ import { connect } from "react-redux";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
+import Paper from "@material-ui/core/Paper";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
 import { getMatchesAsync, getGroupsAsync } from "./actions";
 import GroupList from "./components/GroupList";
+import { Switch, Route } from "react-router-dom";
+import GroupsPage from "./pages/GroupsPage";
+import styled from "styled-components";
+import AppHeader from "./components/AppHeader";
+import AppMenu from "./components/AppMenu";
 
+const Container = styled.div`
+  padding: 50px;
+`;
 class App extends Component {
-  componentDidMount() {
-    this.props.getGroups();
-  }
   render() {
     const { groups } = this.props;
 
     return (
       <div className="App">
-        <AppBar position="static" color="default">
-          <Toolbar>
-            <Typography variant="title" color="inherit">
-              Title
-            </Typography>
-          </Toolbar>
-        </AppBar>
-        <GroupList groups={groups} />
-        <Button variant="contained" color="primary">
-          Hello World
-        </Button>
-        <pre>{JSON.stringify(this.props, null, 2)}</pre>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <AppHeader title="Word Cup 2018">
+          <AppMenu />
+        </AppHeader>
+        <Container>
+          <Switch>
+            <Route exact path="/" component={GroupsPage} />
+            <Route
+              exact
+              path="/matches"
+              component={() => <label>Matches</label>}
+            />
+          </Switch>
+        </Container>
       </div>
     );
   }
 }
 
-const mapStateToProps = (state, props) => ({
-  matches: state.all,
-  groups: state.groups
-});
-
-const mapDispatchToProps = dispatch => ({
-  getMatches: () => dispatch(getMatchesAsync()),
-  getGroups: () => dispatch(getGroupsAsync())
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+export default App;
