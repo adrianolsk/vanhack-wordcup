@@ -25,6 +25,10 @@ const styles = theme => ({
     display: "grid",
     gridTemplateColumns: "1fr 1fr",
     alignItems: "center"
+  },
+  points: {
+    fontWeight: "bold",
+    fontSize: 18
   }
 });
 
@@ -43,9 +47,8 @@ const GroupList = ({ classes, groups }) => (
         <Table className={classes.table}>
           <TableHead>
             <TableRow>
-              <TableCell className={classes.small} colSpan={2}>
-                Team
-              </TableCell>
+              <TableCell numeric>Position</TableCell>
+              <TableCell>Team</TableCell>
               <TableCell numeric>M</TableCell>
               <TableCell numeric>W</TableCell>
               <TableCell numeric>D</TableCell>
@@ -65,7 +68,7 @@ const GroupList = ({ classes, groups }) => (
                   </TableCell>
                   <TableCell className={classes.country}>
                     <img
-                      src={`/images/flags/${t.team.id}.png`}
+                      src={`/images/flags/${t.team.fifa_code}.png`}
                       alt={t.team.country}
                     />
                     {t.team.country}
@@ -77,7 +80,9 @@ const GroupList = ({ classes, groups }) => (
                   <TableCell numeric>{t.team.goals_for}</TableCell>
                   <TableCell numeric>{t.team.goals_against}</TableCell>
                   <TableCell numeric>{t.team.goal_differential}</TableCell>
-                  <TableCell numeric>{t.team.points}</TableCell>
+                  <TableCell numeric className={classes.points}>
+                    {t.team.points}
+                  </TableCell>
                 </TableRow>
               );
             })}

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { SET_ALL_MATCHES, SET_GROUPS } from "./constants";
+import { fetchMatches } from "../api";
 
 export const setMatches = matches => ({
   type: SET_ALL_MATCHES,
@@ -7,11 +8,7 @@ export const setMatches = matches => ({
 });
 
 export const getMatchesAsync = () => {
-  return dispatch => {
-    return axios("https://worldcup.sfg.io/matches/today").then(response => {
-      return dispatch(setMatches(response.data));
-    });
-  };
+  return dispatch => fetchMatches().then(data => dispatch(setMatches(data)));
 };
 
 export const setGroups = matches => ({

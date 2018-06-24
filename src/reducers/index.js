@@ -2,8 +2,7 @@ import { SET_ALL_MATCHES, SET_GROUPS } from "../actions/constants";
 
 function games(
   state = {
-    all: [],
-    current: [],
+    matches: [],
     groups: []
   },
   action
@@ -13,7 +12,7 @@ function games(
       console.log(action);
       return {
         ...state,
-        all: action.payload
+        matches: action.payload
       };
 
     case SET_GROUPS:
