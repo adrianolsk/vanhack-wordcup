@@ -35,11 +35,11 @@ const styles = theme => ({
 const GroupList = ({ classes, groups }) => (
   <Paper className={classes.root}>
     {groups.map(g => (
-      <div key={g.group.id}>
+      <div key={g.id}>
         <Toolbar className={classes.root}>
           <div className={classes.title}>
             <Typography variant="title" id="tableTitle">
-              Group {g.group.letter}
+              Group {g.letter}
             </Typography>
           </div>
         </Toolbar>
@@ -60,28 +60,28 @@ const GroupList = ({ classes, groups }) => (
             </TableRow>
           </TableHead>
           <TableBody>
-            {g.group.teams.map((t, index) => {
+            {g.ordered_teams.map((t, index) => {
               return (
-                <TableRow key={t.team.id}>
+                <TableRow key={t.id}>
                   <TableCell numeric className={classes.small}>
                     {index + 1}
                   </TableCell>
                   <TableCell className={classes.country}>
                     <img
-                      src={`/images/flags/${t.team.fifa_code}.png`}
-                      alt={t.team.country}
+                      src={`/images/flags/${t.fifa_code}.png`}
+                      alt={t.country}
                     />
-                    {t.team.country}
+                    {t.country}
                   </TableCell>
-                  <TableCell numeric>{t.team.games_played}</TableCell>
-                  <TableCell numeric>{t.team.wins}</TableCell>
-                  <TableCell numeric>{t.team.draws}</TableCell>
-                  <TableCell numeric>{t.team.losses}</TableCell>
-                  <TableCell numeric>{t.team.goals_for}</TableCell>
-                  <TableCell numeric>{t.team.goals_against}</TableCell>
-                  <TableCell numeric>{t.team.goal_differential}</TableCell>
+                  <TableCell numeric>{t.games_played}</TableCell>
+                  <TableCell numeric>{t.wins}</TableCell>
+                  <TableCell numeric>{t.draws}</TableCell>
+                  <TableCell numeric>{t.losses}</TableCell>
+                  <TableCell numeric>{t.goals_for}</TableCell>
+                  <TableCell numeric>{t.goals_against}</TableCell>
+                  <TableCell numeric>{t.goal_differential}</TableCell>
                   <TableCell numeric className={classes.points}>
-                    {t.team.points}
+                    {t.points}
                   </TableCell>
                 </TableRow>
               );
