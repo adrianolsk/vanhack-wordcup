@@ -14,4 +14,4 @@ to run the tests ( to be completed...)
 _updated_
 The public API used changed, so I updated the code to reflect the new format returned.
 the project preview is also avaiable at:
-https://build-osngoamhqd.now.sh/
+https://vanhack-wordcup-ymluotapuv.now.sh/
